@@ -1,4 +1,3 @@
-from bs4 import BeautifulSoup
 import pyttsx3
 import speech_recognition as sr
 import wikipedia
@@ -9,8 +8,7 @@ import smtplib
 import webbrowser
 import time
 import requests
-#import pywhatkit
-#from bs4 import BeautifulSoup
+
 print("Initialising Virtual Assistent")
 
 v= pyttsx3.init('sapi5')  # "v" variable is used to access sapi which is the default voices in the database
@@ -46,8 +44,8 @@ def email(to, content):
     server = smtplib.SMTP('smtp.gmail.com',587)
     server.ehlo()
     server.starttls()
-    server.login('19bcs2043@gmail.com','password')
-    server.sendmail('19bcs2043@gmail.com',to,content)
+    server.login('email','password')
+    server.sendmail('email_from',to,content)
     server.close()
 
 def main():
@@ -57,16 +55,6 @@ def main():
     while (ex!="exit"):   # loop will be continuous until the value of "ex" variable reaches exit to stop program
         speak("Listening for command")    # checkpoitn when it will listen for real command
         q=SI()
-
-        #logic for weather forecast
-        #if "check weather" in q.lower():
-            #q=q.lower().replace("check weather of","")
-            #s=f'temperature in {q}'
-            #url='https://google.com/search?q=' + s
-            #w=requests.get(url)
-            #d=BeautifulSoup(w.text,"html.parser")
-            #t=d.find("div",class_="BNeawe").text
-            #speak("current temperature in ",q,"is",t)
             
         #logic for hi/hello
         if "how are you" in q.lower():
@@ -87,13 +75,7 @@ def main():
             q=q.lower().replace("search on google", "")  # replacing "search on google" from the string while searching
             url='https://google.com/search?q=' + q     # creating a url og google search
             webbrowser.open(url)   # opening the google search url on web browser
-
-       #elif "search on youtube" in q.lower():
-            #speak("what should i search")
-            #m=SI()
-            #kit.playonyt(m)
-            #webbrowser.open("youtube.com")
-        
+            
         #logic to open youtube
         elif "open youtube" in q.lower():
             webbrowser.open("youtube.com")    # webbrowser package is accessed here directly to open link provided
@@ -119,7 +101,7 @@ def main():
             print(f"Time is {t}")   # to print and speak time as ouput
             speak(f"Time is {t}")
 
-        # logic to open code
+        # logic to open Visual Studio Code
         elif "open code" in q.lower():
             path='C:\\Users\\Acer\\AppData\\Local\\Programs\\Microsoft VS Code\\code.exe'  # "path" variable holds the location of VS Code application
             os.startfile(path)  # here the application is launched 
@@ -129,7 +111,7 @@ def main():
             try:      # try catch is used if there will be an error because of internet or server
                 speak("what should i say")   # asking to speak
                 content=SI()  # "content" variable will store the content of email to be sent
-                to='19bcs2043@gmail.com'  # "to" variable stores the email
+                to='email'  # "to" variable stores the email
                 email(to,content) # calling the eamil function and passing the information 
                 speak("email sent successfully")
             except Exception as e:
