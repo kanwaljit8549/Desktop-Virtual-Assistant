@@ -1,7 +1,7 @@
 # Desktop-Virtual-Assistant
 Here, I have worked on this project of Desktop Virtual Assistant using python programming language and I have created some of the tasks that this virtual assistant can handle are listed below:-
 
-How are you? : Whenever you ask "how are you?" to the assistant it will reply with different random answers provided in the list.
+*How are you?* : Whenever you ask "how are you?" to the assistant it will reply with different random answers provided in the list.
 
 Time : You can ask the assistant to "tell time" or "what is the time", however you say it, assistant automatically predicts that you are asking the time and it will speak for you.
 
